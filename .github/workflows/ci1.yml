@@ -26,3 +26,13 @@ jobs:
 
     - name: Run tests
       run: pytest
+    - name: Build Artifacts
+      run: |
+        mkdir build
+        cp app1.py requirements.txt build/
+        tar -czf app1.tar.gz build/
+    - name: upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: app1-artifact
+        path: app.tar.gz
